@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>TeamCity Tutorial</title>
+   <meta charset="utf-8">
+ </head>
+ <body>
+  <h1>Руководство по настройке CI с использованием TeamCity</h1>
+  <h2>Шаг 1. Установка</h2>
+	<h3>
+	Скачиваем TeamCity <a href="http://www.jetbrains.com/teamcity/download/">вот отсюда</a>
+	Устанавливаем и открываем в браузере вкладку с номером порта, на которой установили TeamCity.
+	У меня это http://localhost:85.</h3>
+  <h2>Шаг 2. Создание проекта</h2>
+	<h3>Заходим в Administration->Projects, нажимаем "Create project".
+	Открывается вкладка General Settings, где мы должны задать название проекта.</h3>
+	<img src="images/Step1.jpg"/>
+	<h3>Выбираем пункт VCS Roots в Project Settings, нажимаем "Create VCS Root".
+	Выбираем систему контоля версий. У нас это git. Идём на github, копируем оттуда 
+	ссылку на репозиторий, вставляем её в VCS root name. Задаём имя пользователя и пароль.</h3>
+	<img src="images/Step2.jpg"/>
+   <h2>Шаг 3. Настройка билда.</h2>
+	<h3>Заходим в General Settings-> Build Configurations. Нажимаем "Create Build Configuration".
+	Задаём имя конфигурации. Переходим на вкладку "Build Steps". Нажимем кнопку "Add build step".
+	Заполняем необходимые поля в соответствии со скриншотом приведённым ниже.</h3>
+	<img src="images/Step3.jpg"/>
+	<h3>Аналогично создаём step 2 BuildDebug с параметром командной строки /p:Configuration=Debug.
+	Далее необходимо настроить запуск тестов. Для этого создадим ещё один шаг RunTests с
+	настройками приведёнными на скриншоте.</h3>
+	<img src="images/Step4.jpg"/>
+  <h2>Шаг 4. Запуск билда.</h2>
+  <h3>Выбираем наш проект. Нажимаем "Run". Урааа! Видим, зелёную галочку, радуемся. 
+  <img src="images/success.jpg"/>
+  <h3>Можно посмотреть историю билдов, нажав на стрелочку вниз и выбрав "History".
+  Можно посмотреть билд-лог. У меня он получился вот такой:</h3>
+  <img src="images/Log.jpg"/>
+  <h3>Всем удачного CI!<h3>
+  <footer>
+  &copy; Шумская Е.А.
+  </footer>
+ </body> 
+</html>
